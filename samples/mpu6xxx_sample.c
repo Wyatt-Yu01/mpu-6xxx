@@ -12,13 +12,13 @@
 #include "mpu6xxx.h"
 
 /* Default configuration, please change according to the actual situation, support i2c and spi device name */
-#define MPU6XXX_DEVICE_NAME  "i2c2"
+#define MPU6XXX_DEVICE_NAME  "i2c1"
 
 /* Test function */
 static int mpu6xxx_test()
 {
     struct mpu6xxx_device *dev;
-    struct mpu6xxx_3axes accel, gyro;
+    struct mpu6xxx_3axes accel, gyro, mag;
     int i;
 
     /* Initialize mpu6xxx, The parameter is RT_NULL, means auto probing for i2c*/
@@ -35,9 +35,11 @@ static int mpu6xxx_test()
     {
         mpu6xxx_get_accel(dev, &accel);
         mpu6xxx_get_gyro(dev, &gyro);
+        mpu6xxx_get_mag(dev, &mag);
 
         rt_kprintf("accel.x = %3d, accel.y = %3d, accel.z = %3d ", accel.x, accel.y, accel.z);
-        rt_kprintf("gyro.x = %3d gyro.y = %3d, gyro.z = %3d\n", gyro.x, gyro.y, gyro.z);
+        rt_kprintf("gyro.x = %3d gyro.y = %3d, gyro.z = %3d, ", gyro.x, gyro.y, gyro.z);
+        rt_kprintf("mag.x = %3d mag.y = %3d, mag.z = %3d\n", mag.x, mag.y, mag.z);
 
         rt_thread_mdelay(100);
     }
