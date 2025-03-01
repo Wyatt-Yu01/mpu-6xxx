@@ -199,5 +199,7 @@ rt_err_t mpu6xxx_set_gyro_offset(struct mpu6xxx_device *dev, struct mpu6xxx_3axe
  * @return the setting status, RT_EOK reprensents reading the offsets successfully.
  */
 rt_err_t mpu6xxx_get_gyro_offset(struct mpu6xxx_device *dev, struct mpu6xxx_3axes *offset);
+rt_err_t mpu6xxx_write_reg(struct mpu6xxx_device *dev, rt_uint8_t reg, rt_uint8_t data);
+
 
 #endif

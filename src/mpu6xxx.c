@@ -49,7 +49,7 @@
  *
  * @return the writing status, RT_EOK reprensents  writing the value of the register successfully.
  */
-static rt_err_t mpu6xxx_write_reg(struct mpu6xxx_device *dev, rt_uint8_t reg, rt_uint8_t data)
+rt_err_t mpu6xxx_write_reg(struct mpu6xxx_device *dev, rt_uint8_t reg, rt_uint8_t data)
 {
     rt_int8_t res = 0;
 #ifdef RT_USING_I2C
